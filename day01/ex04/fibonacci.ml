@@ -6,7 +6,7 @@
 (*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        *)
 (*                                                +#+#+#+#+#+   +#+           *)
 (*   Created: 2018/10/03 10:44:46 by ckatz             #+#    #+#             *)
-(*   Updated: 2018/10/03 17:57:18 by ckatz            ###   ########.fr       *)
+(*   Updated: 2018/10/04 14:03:16 by ckatz            ###   ########.fr       *)
 (*                                                                            *)
 (* ************************************************************************** *)
 
@@ -26,7 +26,6 @@ let fibonacci n =
             (acc * fibonacci_acc (n - 2) acc + fibonacci_acc (n - 1) acc) 
     in
     fibonacci_acc n acc
-
 
 let main () =
     print_int (fibonacci (-42));
