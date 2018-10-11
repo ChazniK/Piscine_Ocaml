@@ -6,27 +6,23 @@
 (*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        *)
 (*                                                +#+#+#+#+#+   +#+           *)
 (*   Created: 2018/10/10 23:38:25 by ckatz             #+#    #+#             *)
-(*   Updated: 2018/10/11 09:33:22 by ckatz            ###   ########.fr       *)
+(*   Updated: 2018/10/11 15:27:24 by ckatz            ###   ########.fr       *)
 (*                                                                            *)
 (* ************************************************************************** *)
 
 class doctor name age sidekick =
     object (self)
         
+      initializer print_endline "New instance of doctor created"
+
       val _name : string = name
       val _age : int = age
       val _sidekick : People.people = sidekick
       val mutable _hp : int = 10
 
-      initializer 
-      begin 
-        print_endline ("New instance of doctor created");
-        self#regenerate
-      end
-      
       method to_string =  
         begin
-          print_string ("The Doctor " ^ _name ^ " is " ^ string_of_int(_age) ^ " years old with hp of " ^ string_of_int(_hp) ^ " with his sidekick - ");
+          print_string ("The 10th Doctor: " ^ _name ^ " age: " ^ string_of_int(_age) ^ " hp: " ^ string_of_int(_hp) ^ " his sidekick - ");
           _sidekick#to_string;
         end
 
@@ -71,6 +67,8 @@ class doctor name age sidekick =
               
       method use_sonic_screwdriver = print_endline ("Whiiiiwhiiiwhiii Whiiiiwhiiiwhiii Whiiiiwhiiiwhiii")
 
-      method private regenerate = ignore (_hp <- 100) 
+      method private regenerate = {< _name = _name; _age = _age ; _sidekick = _sidekick; _hp = 100 >}
+
+      method restore = self#regenerate
     
     end

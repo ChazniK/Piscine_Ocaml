@@ -6,12 +6,13 @@
 (*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        *)
 (*                                                +#+#+#+#+#+   +#+           *)
 (*   Created: 2018/10/10 22:16:06 by ckatz             #+#    #+#             *)
-(*   Updated: 2018/10/11 09:13:42 by ckatz            ###   ########.fr       *)
+(*   Updated: 2018/10/11 15:02:36 by ckatz            ###   ########.fr       *)
 (*                                                                            *)
 (* ************************************************************************** *)
 
 class people name =
     object
+      initializer print_endline ("New instance of people created")
       val _name : string = name
       val _hp = 100
 
