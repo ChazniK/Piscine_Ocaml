@@ -11,12 +11,12 @@
 (* ************************************************************************** *)
 
 let main () =
-    let bob = new People.people ("Bob") in
-    (* bob#to_string;
+    (*let bob = new People.people ("Bob") in
+     bob#to_string;
     bob#talk;
     bob#die; *)
 
-    let charles = new Doctor.doctor "Charles" 28 bob in
+    (*let charles = new Doctor.doctor "Charles" 28 bob in
     charles#to_string;
     charles#talk;
 
@@ -24,6 +24,10 @@ let main () =
     charles2#to_string;
     
     charles#to_string;
-    charles#use_sonic_screwdriver
+    charles#use_sonic_screwdriver *)
+let dally = new Dalek.dalek in
+    dally#to_string;
+    dally#talk
+
 
 let () = main ()

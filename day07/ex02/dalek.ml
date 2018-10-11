@@ -11,27 +11,18 @@
 (* ************************************************************************** *)
 
 
-class dalek name =
+class dalek =
     object
-        initializer
-            begin
-                print_endline ("Initializer called on type Dalek");
-            end
-
-        val _name : string = "dude"
-        val _hp = 100
-        val mutable _shield = true
-
-        method to_string = print_endline (_name ^ " hp: " ^ string_of_int (_hp) ^ " shield available: " ^ string_of_bool (_shield))
-       
-        method gen_name =
-            ignore (Random.self_init ());
+        initializer print_endline "Initializer called on type Dalek"
+            
+        val _name : string = (
+            Random.self_init ();
             let rec loop limit str =
                 if (limit == 3) then
                     str
                 else
                     let c = Random.int 123 in
-                    if ((c > 64) && (c < 123)) then
+                    if ((c > 63 && c < 90) || (c > 95 && c < 123)) then
                         begin
                             let c = (String.make 1 (char_of_int c)) in
                             let str = (str ^ c) in
@@ -41,4 +32,29 @@ class dalek name =
                         loop limit str
             in
             loop 0 "Dalek"
-    end 
+        )
+
+        val _hp = 100
+        val mutable _shield = true
+
+        method to_string = print_endline (_name ^ " hp: " ^ string_of_int (_hp) ^ " shield available: " ^ string_of_bool (_shield))
+
+        method talk =
+            Random.self_init();
+            let index = Random.int 4 in 
+                match index with
+                | 0 -> print_endline "Explain! Explain!"
+                | 1 -> print_endline "Exterminate! Exterminate!" 
+                | 2 -> print_endline "I obey!"
+                | _ -> print_endline "You are the Doctor! You are the enemy of the Daleks!"
+
+        method exterminate (person : People.people) =
+            if (_shield == true) then
+                _shield <- false
+            else
+                _shield <- true
+
+        method die = print_endline "Emergency Temporal Shift!"
+
+
+               end 
